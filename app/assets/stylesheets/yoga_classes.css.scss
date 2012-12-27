@@ -1,0 +1,99 @@
+// Place all the styles related to the yoga_classes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+  background-color: #3a4049;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  padding-top: 1rem;
+}
+
+h1 {
+  color: #d1eff1;
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 6rem;
+}
+
+h2 {
+  color: #587b89;
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  padding-left: 1.5rem;
+}
+
+hgroup {
+  margin-bottom: 8rem;
+}
+
+/* Classes */
+.day {
+  background-color: #e4e4de;
+  padding: 1rem;
+}
+.day ul {
+  list-style: none;
+  clear: both;
+  margin-bottom: 5rem;
+}
+
+.day_header {
+  padding: 2rem 2rem 7rem 2rem;
+}
+.day_header span {
+  display: block;
+  float: left;
+}
+.week_day {
+  font-size: 6rem;
+  padding-right: 1.5rem;
+}
+.month {
+  font-size: 2rem;
+  position: relative;
+  top: -1.2rem;
+}
+.month_day {
+  font-size: 2rem;
+  left: -3.3rem;
+  position: relative;
+  top: 1rem;
+}
+.time {
+  background: #d484b8; /* Old browsers */
+  background: -moz-linear-gradient(top, #d484b8 0%, #ae6d97 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d484b8), color-stop(100%,#ae6d97)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #d484b8 0%,#ae6d97 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d484b8', endColorstr='#ae6d97',GradientType=0 ); /* IE6-9 */
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color: #fff;
+  font-size: 4rem;
+  padding: 2rem;
+  text-align: center;
+  width: 20rem;
+  float: left;
+}
+
+.teacher {
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+  padding-left: 25rem;
+}
+
+.studio {
+  padding-left: 25rem;
+}

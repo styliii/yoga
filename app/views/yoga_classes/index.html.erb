@@ -1,0 +1,23 @@
+<hgroup>
+  <h1>Yoga in the City</h1>
+  <h2>curated lists of classes with love from @styliii</h2>
+</hgroup>
+
+<div class="day today">
+  <div class="day_header">
+    <span class="week_day"><%= @todays_yoga_classes.first.class_date_time.strftime("%A") %></span>
+    <span class="month"><%= @todays_yoga_classes.first.class_date_time.strftime("%b") %></span>
+    <span class="month_day"><%= @todays_yoga_classes.first.class_date_time.strftime("%d") %></span>
+  </div>
+<% @todays_yoga_classes.each do |yoga_class| %>
+  <ul>
+    <li class="time"><%= yoga_class.class_date_time.strftime("%I:%M %p") %></li>
+    <li class="teacher"><%= yoga_class.teacher.first_name %></li>
+    <li class="studio"><%= yoga_class.studio.name %></li>
+  </ul>
+<% end %>
+</div>
+
+<br />
+
+<%= link_to 'New Yoga class', new_yoga_class_path %>
