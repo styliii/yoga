@@ -39,6 +39,7 @@ hgroup {
 .day {
   background-color: #e4e4de;
   padding: 1rem;
+  width: 50%;
 }
 .day ul {
   list-style: none;
@@ -96,4 +97,9 @@ hgroup {
 
 .studio {
   padding-left: 25rem;
+}
+
+footer {
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  color: #d1eff1;
 }
