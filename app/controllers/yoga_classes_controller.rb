@@ -2,9 +2,7 @@ class YogaClassesController < ApplicationController
   # GET /yoga_classes
   # GET /yoga_classes.json
   def index
-    @todays_yoga_classes = YogaClass.where("class_date_time >= :start_date AND class_date_time <= :end_date",
-  {:start_date => DateTime.now, :end_date => DateTime.now.end_of_day}).order("class_date_time")
-
+    @todays_yoga_classes = YogaClass.todays_classes
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @yoga_classes }
