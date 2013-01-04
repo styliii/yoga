@@ -54,6 +54,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.1.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.1.0)
+      factory_girl (~> 4.1.0)
+      railties (>= 3.0.0)
     ffi (1.2.0)
     hike (1.2.1)
     i18n (0.6.1)
@@ -94,7 +99,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.0.2)
+    rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
     rspec-core (2.12.0)
@@ -145,6 +150,7 @@ DEPENDENCIES
   capybara-webkit
   chronic
   coffee-rails (~> 3.2.1)
+  factory_girl_rails
   jquery-rails
   nokogiri
   rails (= 3.2.8)

@@ -58,6 +58,7 @@ task :fetch_yogavida_classes => :environment do
   hash_schedule.each do |class_date, classes|
 
     classes.each do |class_deets|
+
       class_time = "#{class_date.to_s} #{class_deets.find(:xpath, 'td[1]').text}"
       style = class_deets.find(:xpath, 'td[3]').text
       teacher = class_deets.find(:xpath, 'td[4]').text
@@ -69,7 +70,7 @@ task :fetch_yogavida_classes => :environment do
         yc1 = YogaClass.create(class_date_time: Chronic.parse(class_time).to_datetime)
         print yc1.class_date_time
         yc1.studio = Studio.find_or_create_by_name("Yoga Vida #{studio_location}")
-        yc1.teacher = Teacher.find_or_create_by_first_name(first_name: teacher)
+        yc1.teacher = Teacher.find_or_create_by_first_name(teacher)
         puts yc1.teacher.first_name
         yc1.save
     end
