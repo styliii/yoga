@@ -1,5 +1,5 @@
 class Teacher < ActiveRecord::Base
-  attr_accessible :first_name, :last_name
+  attr_accessible :first_name, :last_name, :specialty_list
   has_many :yoga_classes
   acts_as_taggable_on :specialty
 
