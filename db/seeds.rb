@@ -6,14 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-days_of_week = DayOfWeek.create([
-  {name: "Monday", weekday: true},
-  {name: "Tuesday", weekday: true},
-  {name: "Wednesday", weekday: true},
-  {name: "Thursday", weekday: true},
-  {name: "Friday", weekday: true},
-  {name: "Saturday", weekday: false},
-  {name: "Sunday", weekday: false}])
 
 yc1 = YogaClass.create
 yc1.studio = Studio.create(name: "I.AM.You Yoga", location: "132 Mulberry St")
