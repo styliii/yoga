@@ -62,9 +62,9 @@ task :fetch_yogavida_classes => :environment do
       class_time = "#{class_date.to_s} #{class_deets.find(:xpath, 'td[1]').text}"
       style = class_deets.find(:xpath, 'td[3]').text
       teachers_first_name = class_deets.find(:xpath, 'td[4]').text
-      studio = " Yoga Vida #{class_deets.find(:xpath, 'td[5]').text}"
+      studio = "Yoga Vida #{class_deets.find(:xpath, 'td[5]').text}"
       class_length = class_deets.find(:xpath, 'td[6]').text
-      class_time = class_time.slice!(0,4)
+      class_time.slice!(0,4)
       puts teachers_first_name
       puts class_time
 

@@ -34,7 +34,13 @@ describe Teacher do
   #   FactoryGirl.build(:teacher, first_name: "Lauren").should_not be_valid
   # end
 
-  it 'knows which teachers are the favorite'
+  it 'knows which teachers are the favorite' do
+    teacher = FactoryGirl.create(:teacher)
+    teacher.favorite = true
+    teacher.save
+
+    Teacher.favorite_teachers.count.should == 1
+  end
   it 'has at least one yoga class that it teaches'
 
 end

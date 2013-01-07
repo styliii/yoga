@@ -25,24 +25,22 @@ task :fetch_jivamukti_classes => :environment do
       teacher = td.css("div.node-data-field-class-type-field-class-teacher-uid")[num].text.strip
       teachers_first_name, teachers_last_name = teacher.split(" ")
       class_time = td.css("div.node-data-field-class-datetime-field-class-datetime-value")[num].text.strip
-      class_month = DateTime.now.strftime('%B')
-      class_day = dates_of_week[(index + 1) % 7 - 1]
-      puts "#{class_month} #{class_day}"
-      puts class_type
+      class_month = DateTime.now.strftime("%B")
+      class_day = dates_of_week[(index + 1) % 7 - 1].gsub(/\s+/, "")
       puts "#{teachers_first_name} #{teachers_last_name}"
-      puts class_time
-      class_date_time = "#{class_month} #{class_day} #{class_time}"
+      class_date_time = "#{class_month} #{class_day[0..-2]}, #{class_time}"
       studio = "Jivamukti"
-      # yc1 = YogaClass.create(class_date_time: Chronic.parse("#{class_month} #{class_day} #{class_time}"))
-      # yc1.studio = Studio.find_or_create_by_name("Jivamukti")
-      # yc1.teacher = Teacher.find_or_create_by_first_name(first_name: teacher_first_name, last_name: teacher_last_name)
-      # yc1.save
 
-      YogaClass.insert_new({:studio => studio,
-                                         :teachers_first_name => teachers_first_name,
-                                         :teachers_last_name => teachers_last_name,
-                                         :class_date_time=> class_time })
+      class_details =  {:studio => studio,
+               :teachers_first_name => teachers_first_name,
+               :teachers_last_name => teachers_last_name,
+               :class_date_time => class_date_time}
+
+      new_class =  YogaClass.insert_new(class_details)
+      puts new_class.inspect
     end
   end
 
 end
+
+

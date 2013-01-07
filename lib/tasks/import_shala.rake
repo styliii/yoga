@@ -67,7 +67,9 @@ task :fetch_shala_classes => :environment do
       teachers_first_name = class_deets.find(:xpath, 'td[4]').text.split(" ").first
       studio = "Shala #{class_deets.find(:xpath, 'td[7]').text}"
       class_length = class_deets.find(:xpath, 'td[9]').text
-      class_time = class_time.slice!(0,4)
+      puts class_time
+      class_time.slice!(0,4)
+      puts class_time
 
       next if teachers_first_name.start_with?("Cancelled")
 

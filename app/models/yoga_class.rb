@@ -10,11 +10,19 @@ class YogaClass < ActiveRecord::Base
     {:start_date => DateTime.now, :end_date => DateTime.now.end_of_day}).order("class_date_time")
   end
 
+  def self.todays_fav_classes
+    YogaClass.todays_classes.collect{|yc| yc if yc.visible? }.compact
+  end
+
   def self.insert_new(details = {})
     studio_id = Studio.find_or_create_by_name(details[:studio]).id
     teacher_id = Teacher.find_or_create_by_first_name(first_name: details[:teachers_first_name], last_name: details[:teachers_last_name]).id
     class_date_time = Chronic.parse(details[:class_date_time])
 
     YogaClass.create(studio_id: studio_id, teacher_id: teacher_id, class_date_time: class_date_time )
+  end
+
+  def visible?
+    self.teacher.favorite?
   end
 end

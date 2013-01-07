@@ -2,7 +2,7 @@ class YogaClassesController < ApplicationController
   # GET /yoga_classes
   # GET /yoga_classes.json
   def index
-    @todays_yoga_classes = YogaClass.todays_classes
+    @todays_yoga_classes = YogaClass.todays_fav_classes
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @yoga_classes }
