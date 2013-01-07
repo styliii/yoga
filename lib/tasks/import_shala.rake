@@ -64,19 +64,16 @@ task :fetch_shala_classes => :environment do
 
       class_time = "#{class_date.to_s} #{class_deets.find(:xpath, 'td[1]').text}"
       style = class_deets.find(:xpath, 'td[3]').text
-      teacher = class_deets.find(:xpath, 'td[4]').text.split(" ").first
-      studio_location = class_deets.find(:xpath, 'td[7]').text
+      teachers_first_name = class_deets.find(:xpath, 'td[4]').text.split(" ").first
+      studio = "Shala #{class_deets.find(:xpath, 'td[7]').text}"
       class_length = class_deets.find(:xpath, 'td[9]').text
+      class_time = class_time.slice!(0,4)
 
-      next if teacher.start_with?("Cancelled")
+      next if teachers_first_name.start_with?("Cancelled")
 
-      class_time.slice!(0,4)
-      yc1 = YogaClass.create(class_date_time: Chronic.parse(class_time).to_datetime)
-      print yc1.class_date_time
-      yc1.studio = Studio.find_or_create_by_name("Shala #{studio_location}")
-      yc1.teacher = Teacher.find_or_create_by_first_name(first_name: teacher)
-      puts yc1.teacher.first_name
-      yc1.save
+      YogaClass.insert_new({:studio => studio,
+                                         :teachers_first_name => teachers_first_name,
+                                         :class_date_time=> class_time })
     end
   end
 

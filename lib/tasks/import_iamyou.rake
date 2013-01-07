@@ -16,8 +16,8 @@ task :fetch_iamyou_classes => :environment do
   classes_for_the_week.each do |yc|
     day, date, time, status = yc.split(" ")
     class_schedule = Hash.new
-    class_schedule[:date] = date
-    class_schedule[:time] = time
+    class_schedule[:date_time] = date + " " + time
+    puts class_schedule[:date_time]
     class_schedule[:teacher] = "Lauren"
     class_schedule[:studio] = "iamyoustudio"
     class_schedule[:status] = status
@@ -29,10 +29,9 @@ task :fetch_iamyou_classes => :environment do
 
   weekly_schedule.each do |class_detail|
     unless class_detail[:status] == "No"
-      yc1 = YogaClass.create(class_date_time: Chronic.parse(class_detail[:date] + " " + class_detail[:time]).to_datetime)
-      yc1.studio = Studio.find_or_create_by_name(class_detail[:studio])
-      yc1.teacher = Teacher.find_or_create_by_first_name(first_name: class_detail[:teacher])
-      yc1.save
+      YogaClass.insert_new({:studio => class_detail[:studio],
+                                         :teachers_first_name => class_detail[:teacher],
+                                         :class_date_time=> class_detail[:date_time] })
     end
   end
 end
