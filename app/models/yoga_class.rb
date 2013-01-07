@@ -5,13 +5,19 @@ class YogaClass < ActiveRecord::Base
 
   validates :class_date_time, :presence => true, :uniqueness => { :scope => :teacher_id, :message => "duplicate yoga class"}
 
-  def self.classes_on(date)
-    where("class_date_time >= :start_date AND class_date_time <= :end_date",
-    {:start_date => date, :end_date => date.end_of_day}).order("class_date_time")
+
+  def self.classes_for_day(day)
+    # note that for this to work in multiple time zones, you should store in UTC and do handle conversions based on time zone of
+    # the user viewing a particular page - disregarding for now
+    where("class_date_time >= ? AND class_date_time < ?", day.beginning_of_day, day.end_of_day)
   end
 
-  def self.fav_classes_on(date)
-    YogaClass.classes_on(date).collect{|yc| yc if yc.visible? }.compact
+  def self.todays_classes
+    self.classes_for_day(Time.now)
+  end
+
+  def self.todays_fav_classes
+    YogaClass.todays_classes.collect{|yc| yc if yc.visible? }.compact
   end
 
   def self.insert_new(details = {})
