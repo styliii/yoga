@@ -25,13 +25,6 @@ task :fetch_iamyou_classes => :environment do
     weekly_schedule << class_schedule
   end
 
-  # puts weekly_schedule.inspect
-
-  weekly_schedule.each do |class_detail|
-    unless class_detail[:status] == "No"
-      YogaClass.insert_new({:studio => class_detail[:studio],
-                                         :teachers_first_name => class_detail[:teacher],
-                                         :class_date_time=> class_detail[:date_time] })
-    end
-  end
+  weekly_schedule.reject!{|class_detail| class_detail[:status] == "No"}
+  YogaClass.insert_new(weekly_schedule)
 end
