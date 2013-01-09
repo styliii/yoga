@@ -10,9 +10,9 @@
       <span class="week_day"><%= @todays_yoga_classes.first.class_date_time.strftime("%A") %></span>
       <span class="month"><%= @todays_yoga_classes.first.class_date_time.strftime("%b") %></span>
       <span class="month_day"><%= @todays_yoga_classes.first.class_date_time.strftime("%d") %></span>
+      <span class="tomorrow"><%= link_to_tomorrows_classes "tomorrow" %></span>
     </div>
-    <%= link_to "tomorrow", "yoga_classes/2013/1/10" %>
-    <%= link_to_tomorrows_classes "tomorrow" %>
+
   <% @todays_yoga_classes.each do |yoga_class| %>
     <ul>
       <li class="time"><%= yoga_class.class_date_time.strftime("%I:%M %p") %></li>
