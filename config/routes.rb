@@ -1,6 +1,4 @@
 MyYogaPractice::Application.routes.draw do
-  resources :yoga_classes
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-MyYogaPractice::Application.config.secret_token = '29aa843ec674caa9f9beb9b1bd961c9c680b9cc677d78312a3100d933d160a64605eb643e971d4aaf49317ac3b5dc87776674c150cc0d812bed4c61b4c6e8be4'
+MyYogaPractice::Application.config.secret_token = '2a980e8ab68c033c930c529170e852e541546c651e545d819208135361cd9bdfe0c6491a9cb250dbf14defc13ab70c0be0b8fe1ccef46392cbf666dbf61029ba'
