@@ -1,4 +1,10 @@
 MyYogaPractice::Application.routes.draw do
+
+  resources :yoga_classes
+
+  match "/yoga_classes/:year/:month/:day", to: "yoga_classes#show_class"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

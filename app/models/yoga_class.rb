@@ -5,13 +5,13 @@ class YogaClass < ActiveRecord::Base
 
   validates :class_date_time, :presence => true, :uniqueness => { :scope => :teacher_id, :message => "duplicate yoga class"}
 
-  def self.todays_classes
+  def self.classes_on(date)
     where("class_date_time >= :start_date AND class_date_time <= :end_date",
-    {:start_date => DateTime.now, :end_date => DateTime.now.end_of_day}).order("class_date_time")
+    {:start_date => date, :end_date => date.end_of_day}).order("class_date_time")
   end
 
-  def self.todays_fav_classes
-    YogaClass.todays_classes.collect{|yc| yc if yc.visible? }.compact
+  def self.fav_classes_on(date)
+    YogaClass.classes_on(date).collect{|yc| yc if yc.visible? }.compact
   end
 
   def self.insert_new(details = {})

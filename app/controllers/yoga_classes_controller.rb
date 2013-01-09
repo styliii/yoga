@@ -2,7 +2,7 @@ class YogaClassesController < ApplicationController
   # GET /yoga_classes
   # GET /yoga_classes.json
   def index
-    @todays_yoga_classes = YogaClass.todays_fav_classes
+    @todays_yoga_classes = YogaClass.fav_classes_on(DateTime.now)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @yoga_classes }
@@ -77,6 +77,20 @@ class YogaClassesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to yoga_classes_url }
       format.json { head :no_content }
+    end
+  end
+
+  def show_class
+    year = params[:year]
+    month = params[:month]
+    day = params[:day]
+    date = Chronic.parse("#{month}/#{day}/#{year}")
+
+    @todays_yoga_classes = YogaClass.fav_classes_on(date)
+
+    respond_to do |format|
+      format.html  { render 'index' }
+      format.js
     end
   end
 end
