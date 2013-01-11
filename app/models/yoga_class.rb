@@ -20,12 +20,17 @@ class YogaClass < ActiveRecord::Base
     YogaClass.todays_classes.collect{|yc| yc if yc.visible? }.compact
   end
 
-  def self.insert_new(details = {})
-    studio_id = Studio.find_or_create_by_name(details[:studio]).id
-    teacher_id = Teacher.find_or_create_by_first_name(first_name: details[:teachers_first_name], last_name: details[:teachers_last_name]).id
-    class_date_time = Chronic.parse(details[:class_date_time])
-
-    YogaClass.create(studio_id: studio_id, teacher_id: teacher_id, class_date_time: class_date_time )
+  def self.insert_new(details)
+    details.each do |detail|
+      begin
+        studio_id       = Studio.find_or_create_by_name(details[:studio]).id
+        teacher_id      = Teacher.find_or_create_by_first_name(first_name: details[:teachers_first_name], last_name: details[:teachers_last_name]).id
+        class_date_time = Chronic.parse(details[:class_date_time])
+        YogaClass.create(studio_id: studio_id, teacher_id: teacher_id, class_date_time: class_date_time )
+      rescue
+        next
+      end
+    end
   end
 
   def visible?
