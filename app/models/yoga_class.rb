@@ -16,8 +16,8 @@ class YogaClass < ActiveRecord::Base
     self.classes_for_day(Time.now)
   end
 
-  def self.todays_fav_classes
-    YogaClass.scoped(:joins => :teacher, :conditions => { :teachers => {:favorite => true}}).todays_classes
+  def self.fav_classes_on(day)
+    YogaClass.classes_for_day(day).scoped(:joins => :teacher, :conditions => { :teachers => {:favorite => true}})
   end
 
   def self.insert_new(details)

@@ -1,8 +1,10 @@
 MyYogaPractice::Application.routes.draw do
 
-  resources :yoga_classes
+  resources :yoga_classes do
+    collection { get ':year/:month/:day', :action => :index, :as => :by_day}
+  end
 
-  match "/yoga_classes/:year/:month/:day", to: "yoga_classes#show_class"
+  # match "/yoga_classes/:year/:month/:day", to: "yoga_classes#index"
 
 
   # The priority is based upon order of creation:
@@ -54,7 +56,7 @@ MyYogaPractice::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'yoga_classes#index'
 
   # See how all your routes lay out with "rake routes"
 
