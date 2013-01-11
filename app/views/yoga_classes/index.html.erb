@@ -2,13 +2,12 @@
   <h1>Yoga in the City</h1>
   <h2>curated list of classes with love from @styliii</h2>
 </hgroup>
-<span class="tomorrow"><%= link_to "Next Day", by_day_yoga_classes_path(year: @date.year, month: @date.month, day: @date.day + 1) %></span>
+<div id="schedule">
 
-<% if @todays_yoga_classes.count == 0 %>
-  <h2>No classes today</h2>
-<% else %>
-  <%= render 'schedule' %>
-<% end %>
+    <%= render 'schedule' %>
+
+</div>
 <br />
+
 
 
