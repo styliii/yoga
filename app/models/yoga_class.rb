@@ -17,7 +17,7 @@ class YogaClass < ActiveRecord::Base
   end
 
   def self.todays_fav_classes
-    YogaClass.todays_classes.collect{|yc| yc if yc.visible? }.compact
+    YogaClass.scoped(:joins => :teacher, :conditions => { :teachers => {:favorite => true}}).todays_classes
   end
 
   def self.insert_new(details)

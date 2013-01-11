@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107050058) do
+ActiveRecord::Schema.define(:version => 20130111212435) do
 
   create_table "studios", :force => true do |t|
     t.string   "name"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20130107050058) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.datetime "class_date_time"
-    t.boolean  "visible"
   end
 
 end
