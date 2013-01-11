@@ -55,6 +55,8 @@ task :fetch_shala_classes => :environment do
 
   hash_schedule[schedule[index_of_day.last].text.to_sym] = schedule[(index_of_day[6] + 1)..(schedule.count - 1)]
 
+  class_details = []
+
   hash_schedule.each do |class_date, classes|
     puts class_date.inspect
 
@@ -67,16 +69,16 @@ task :fetch_shala_classes => :environment do
       teachers_first_name = class_deets.find(:xpath, 'td[4]').text.split(" ").first
       studio = "Shala #{class_deets.find(:xpath, 'td[7]').text}"
       class_length = class_deets.find(:xpath, 'td[9]').text
-      puts class_time
       class_time.slice!(0,4)
-      puts class_time
 
       next if teachers_first_name.start_with?("Cancelled")
 
-      YogaClass.insert_new({:studio => studio,
-                                         :teachers_first_name => teachers_first_name,
-                                         :class_date_time=> class_time })
+      class_details << {:studio => studio,
+                                :teachers_first_name => teachers_first_name,
+                                :class_date_time=> class_time }
     end
   end
+
+  YogaClass.insert_new(class_details)
 
 end

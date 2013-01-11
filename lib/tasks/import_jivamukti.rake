@@ -12,6 +12,7 @@ task :fetch_jivamukti_classes => :environment do
     day_of_month.text.strip.gsub(/\n/,"")
   end
 
+  class_details = []
 
   raw_info.each_with_index do |td, index|
     # puts index
@@ -31,16 +32,14 @@ task :fetch_jivamukti_classes => :environment do
       class_date_time = "#{class_month} #{class_day[0..-2]}, #{class_time}"
       studio = "Jivamukti"
 
-      class_details =  {:studio => studio,
+      class_details <<  {:studio => studio,
                :teachers_first_name => teachers_first_name,
                :teachers_last_name => teachers_last_name,
                :class_date_time => class_date_time}
-
-      new_class =  YogaClass.insert_new(class_details)
-      puts new_class.inspect
     end
   end
 
+  YogaClass.insert_new(class_details)
 end
 
 

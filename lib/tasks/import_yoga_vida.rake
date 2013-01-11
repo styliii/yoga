@@ -55,6 +55,8 @@ task :fetch_yogavida_classes => :environment do
 
   hash_schedule[schedule[index_of_day.last].text.to_sym] = schedule[(index_of_day[6] + 1)..(schedule.count - 1)]
 
+  class_details = []
+
   hash_schedule.each do |class_date, classes|
 
     classes.each do |class_deets|
@@ -70,10 +72,12 @@ task :fetch_yogavida_classes => :environment do
 
       next if teachers_first_name.start_with?("Cancelled")
 
-        YogaClass.insert_new({:studio => studio,
-                                         :teachers_first_name => teachers_first_name,
-                                         :class_date_time=> class_time })
+      class_details << {:studio => studio,
+                                :teachers_first_name => teachers_first_name,
+                                :class_date_time=> class_time }
     end
   end
+
+  YogaClass.insert_new(class_details)
 
 end
