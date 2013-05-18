@@ -6,9 +6,10 @@ html {
 }
 
 body {
+  background: image-url("namaste.jpg") no-repeat 50% 30px;
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
   font-size: 62.5%;
-  background-color: #3a4049;
+  background-color: black;
 }
 
 .container {
@@ -37,7 +38,6 @@ hgroup {
 
 /* Classes */
 .day {
-  background-color: #e4e4de;
   padding: 1rem;
   width: 50%;
 }
@@ -70,19 +70,19 @@ hgroup {
   top: 1rem;
 }
 .time {
-  background: #d484b8; /* Old browsers */
-  background: -moz-linear-gradient(top, #d484b8 0%, #ae6d97 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d484b8), color-stop(100%,#ae6d97)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* IE10+ */
-  background: linear-gradient(to bottom, #d484b8 0%,#ae6d97 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d484b8', endColorstr='#ae6d97',GradientType=0 ); /* IE6-9 */
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  // background: #d484b8; /* Old browsers */
+  // background: -moz-linear-gradient(top, #d484b8 0%, #ae6d97 100%); /* FF3.6+ */
+  // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d484b8), color-stop(100%,#ae6d97)); /* Chrome,Safari4+ */
+  // background: -webkit-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* Chrome10+,Safari5.1+ */
+  // background: -o-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* Opera 11.10+ */
+  // background: -ms-linear-gradient(top, #d484b8 0%,#ae6d97 100%); /* IE10+ */
+  // background: linear-gradient(to bottom, #d484b8 0%,#ae6d97 100%); /* W3C */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d484b8', endColorstr='#ae6d97',GradientType=0 ); /* IE6-9 */
+  // border-radius: 5px;
+  // -moz-border-radius: 5px;
+  // -webkit-border-radius: 5px;
   color: #fff;
-  font-size: 4rem;
+  font-size: 2rem;
   padding: 2rem;
   text-align: center;
   width: 20rem;

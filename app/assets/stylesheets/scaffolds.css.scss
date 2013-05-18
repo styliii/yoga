@@ -1,6 +1,6 @@
 body {
   background-color: #fff;
-  color: #333;
+  color: #DFDFDC;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -17,11 +17,27 @@ pre {
   padding: 10px;
   font-size: 11px;
 }
-
+span.prev_day a {
+  display: block;
+  position: relative;
+  top: -15px;
+  left: -15px;
+  background: image-url("arrows.png") no-repeat 0 0;
+  width: 35px;
+  height: 64px;
+}
+span.tomorrow a {
+  display: block;
+  position: relative;
+  top: -15px;
+  background: image-url("arrows.png") no-repeat -35px 0;
+  width: 35px;
+  height: 64px;
+}
 a {
-  color: #000;
+  color: #DFDFDC;
   &:visited {
-    color: #666;
+    color: #DFDFDC;
   }
   &:hover {
     color: #fff;
