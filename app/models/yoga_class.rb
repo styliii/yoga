@@ -23,11 +23,13 @@ class YogaClass < ActiveRecord::Base
   def self.insert_new(details)
     details.each do |detail|
       begin
-        studio_id       = Studio.find_or_create_by_name(details[:studio]).id
-        teacher_id      = Teacher.find_or_create_by_first_name(first_name: details[:teachers_first_name], last_name: details[:teachers_last_name]).id
-        class_date_time = Chronic.parse(details[:class_date_time])
+        studio_id       = Studio.find_or_create_by_name(detail[:studio]).id
+        teacher_id      = Teacher.find_or_create_by_first_name(first_name: detail[:teachers_first_name], last_name: detail[:teachers_last_name]).id
+        class_date_time = Chronic.parse(detail[:class_date_time])
         YogaClass.create(studio_id: studio_id, teacher_id: teacher_id, class_date_time: class_date_time )
-      rescue
+      rescue Exception => e  
+        puts "there was an error"
+        puts e.inspect
         next
       end
     end

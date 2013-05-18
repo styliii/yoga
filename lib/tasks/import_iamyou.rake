@@ -18,7 +18,8 @@ task :fetch_iamyou_classes => :environment do
     class_schedule = Hash.new
     class_schedule[:date_time] = date + " " + time
     puts class_schedule[:date_time]
-    class_schedule[:teacher] = "Lauren"
+    class_schedule[:teachers_first_name] = "Lauren"
+    class_schedule[:teachers_last_name] = "Imparato"
     class_schedule[:studio] = "iamyoustudio"
     class_schedule[:status] = status
 
