@@ -7,7 +7,7 @@
       <span class="week_day"><%= @todays_yoga_classes.first.class_date_time.strftime("%A") %></span>
       <span class="month"><%= @todays_yoga_classes.first.class_date_time.strftime("%b") %></span>
       <span class="month_day"><%= @todays_yoga_classes.first.class_date_time.strftime("%d") %></span>
-      <span class="tomorrow"><%= link_to "", by_day_yoga_classes_path(year: @date.year, month: @date.month, day: @date.day + 1), remote: true %></span>
+      <span class="next_day"><%= link_to "", by_day_yoga_classes_path(year: @date.year, month: @date.month, day: @date.day + 1), remote: true %></span>
     </div>
     <%= render @todays_yoga_classes %>
   </div>
