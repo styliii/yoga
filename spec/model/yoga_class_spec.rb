@@ -9,10 +9,10 @@ describe YogaClass do
   end
 
   it 'can be created by passing a hash of values' do
-    YogaClass.insert_new({:studio => "iamyoustudio",
+    YogaClass.insert_new([{:studio => "iamyoustudio",
                                        :teachers_first_name => "Lauren",
                                        :teachers_last_name => "Imparato",
-                                       :class_date_time=> "Today 3pm" })
+                                       :class_date_time=> "Today 3pm" }])
 
     YogaClass.last.studio == Studio.find_by_name("iamyoustudio")
     YogaClass.last.teacher.first_name == Teacher.find_by_first_name("Lauren")
@@ -20,13 +20,14 @@ describe YogaClass do
   end
 
   it 'is only visible if the teacher is marked as favorite' do
-    yc = YogaClass.insert_new({:studio => "iamyoustudio",
-                                       :teachers_first_name => "Lauren",
-                                       :teachers_last_name => "Imparato",
-                                       :class_date_time=> "Today 5pm" })
+    YogaClass.insert_new([{:studio => "iamyoustudio",
+                               :teachers_first_name => "Lauren",
+                               :teachers_last_name => "Imparato",
+                               :class_date_time=> "Today 5pm" }])
     teacher = Teacher.find_by_first_name("Lauren")
     teacher.favorite = true
-
+    studio = Studio.find_by_name("iamyoustudio")
+    yc = YogaClass.where(teacher_id: teacher.id, studio_id: studio.id).last
     yc.visible? == true
   end
 
