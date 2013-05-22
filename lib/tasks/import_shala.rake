@@ -3,11 +3,12 @@ task :fetch_shala_classes => :environment do
 
   require "capybara"
   require "capybara/dsl"
-  require "capybara-webkit"
   require "active_support/all"
   require 'chronic'
+  require 'capybara/poltergeist'
   Capybara.run_server = false
-  Capybara.current_driver = :webkit
+  Capybara.javascript_driver = :poltergeist
+  Capybara.current_driver = :poltergeist
   Capybara.app_host = "https://clients.mindbodyonline.com"
 
   module Test
@@ -32,18 +33,17 @@ task :fetch_shala_classes => :environment do
   spider.visit('/ASP/home.asp?studioid=3571')
   spider.visit("/ASP/main_class.asp?tg=&vt=&lvl=&stype=-7&view=week&trn=0&page=&catid=&prodid=&date=#{t_month}%2F#{t_day}%2F#{t_year}&classid=0&sSU=&optForwardingLink=&qParam=&justloggedin=&nLgIn=&pMode=")
   spider.select("All Location", :from => "optLocation")
+  sleep(5)
   schedule = spider.all('table#classSchedule-mainTable tr').map{|row| row}
   # puts schedule.inspect
 
   day_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-
     # find the index of all the days
     index_of_day = schedule.map do |row|
-      if day_of_week.include?(row.text.split(" ").first)
+      if day_of_week.include?(row.text[1..3])
         schedule.index(row)
       end
     end
-
   index_of_day.compact!
   # => [0, 9, 21, 31, 45, 53, 62]
 
