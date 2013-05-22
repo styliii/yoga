@@ -3,11 +3,13 @@ task :fetch_yogavida_classes => :environment do
 
   require "capybara"
   require "capybara/dsl"
-  require "capybara-webkit"
   require "active_support/all"
   require 'chronic'
+  require 'capybara/poltergeist'
+  require 'debugger'
   Capybara.run_server = false
-  Capybara.current_driver = :webkit
+  Capybara.javascript_driver = :poltergeist
+  Capybara.current_driver = :poltergeist
   Capybara.app_host = "https://clients.mindbodyonline.com"
 
   module Test
@@ -39,7 +41,7 @@ task :fetch_yogavida_classes => :environment do
 
     # find the index of all the days
     index_of_day = schedule.map do |row|
-      if day_of_week.include?(row.text.split(" ").first)
+      if day_of_week.include?(row.text[1..3])
         schedule.index(row)
       end
     end
@@ -56,25 +58,29 @@ task :fetch_yogavida_classes => :environment do
   hash_schedule[schedule[index_of_day.last].text.to_sym] = schedule[(index_of_day[6] + 1)..(schedule.count - 1)]
 
   class_details = []
+  puts hash_schedule.inspect
 
   hash_schedule.each do |class_date, classes|
 
     classes.each do |class_deets|
+      begin
+        class_time = "#{class_date.to_s} #{class_deets.find(:xpath, 'td[1]').text}"
+        style = class_deets.find(:xpath, 'td[3]').text
+        teachers_first_name = class_deets.find(:xpath, 'td[4]').text
+        studio = "Yoga Vida #{class_deets.find(:xpath, 'td[5]').text}"
+        class_length = class_deets.find(:xpath, 'td[6]').text
+        class_time.slice!(0,4)
+        puts teachers_first_name
+        puts class_time
 
-      class_time = "#{class_date.to_s} #{class_deets.find(:xpath, 'td[1]').text}"
-      style = class_deets.find(:xpath, 'td[3]').text
-      teachers_first_name = class_deets.find(:xpath, 'td[4]').text
-      studio = "Yoga Vida #{class_deets.find(:xpath, 'td[5]').text}"
-      class_length = class_deets.find(:xpath, 'td[6]').text
-      class_time.slice!(0,4)
-      puts teachers_first_name
-      puts class_time
+        next if teachers_first_name.start_with?("Cancelled")
 
-      next if teachers_first_name.start_with?("Cancelled")
-
-      class_details << {:studio => studio,
-                                :teachers_first_name => teachers_first_name,
-                                :class_date_time=> class_time }
+        class_details << {:studio => studio,
+                                  :teachers_first_name => teachers_first_name,
+                                  :class_date_time=> class_time }
+      rescue
+        next
+      end
     end
   end
 

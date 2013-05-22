@@ -3,11 +3,12 @@ task :fetch_shala_classes => :environment do
 
   require "capybara"
   require "capybara/dsl"
-  require "capybara-webkit"
   require "active_support/all"
   require 'chronic'
+  require 'capybara/poltergeist'
   Capybara.run_server = false
-  Capybara.current_driver = :webkit
+  Capybara.javascript_driver = :poltergeist
+  Capybara.current_driver = :poltergeist
   Capybara.app_host = "https://clients.mindbodyonline.com"
 
   module Test
