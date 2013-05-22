@@ -7,7 +7,6 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'nokogiri'
-gem "capybara-webkit"
 gem 'capybara'
 gem 'chronic'
 gem 'acts-as-taggable-on', '~> 2.3.1'
