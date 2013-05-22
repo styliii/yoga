@@ -5,12 +5,12 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'nokogiri'
 gem 'capybara'
 gem 'chronic'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'poltergeist'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,6 +31,11 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'pry'
   gem 'debugger'
+  gem 'sqlite3'
+end
+
+group :production do
+	gem 'pg'
 end
 
 # To use ActiveModel has_secure_password
