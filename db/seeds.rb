@@ -12,7 +12,7 @@ heather = Teacher.where(first_name: "Heather").first
 jeffrey = Teacher.where(first_name: "Jeffrey", last_name: "Villanueva").first
 mimi = Teacher.where(first_name: "Mimi").first
 
-[lauren, jules, heather, jeffrey, mimi].each do |teacher|
-  teacher.favorite = true
-  teacher.save
-end
+  [lauren, jules, heather, jeffrey, mimi].each do |teacher|
+    teacher.favorite = true
+    teacher.save
+  end

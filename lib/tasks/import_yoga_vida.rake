@@ -1,6 +1,5 @@
 desc "Fetching YogaVida Class schedule"
 task :fetch_yogavida_classes => :environment do
-#hi
   require "capybara"
   require "capybara/dsl"
   require "active_support/all"
