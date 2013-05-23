@@ -30,7 +30,8 @@ task :fetch_yogavida_classes => :environment do
   spider = Test::Yoga.new
   spider.visit('/ASP/home.asp?studioid=8521')
   spider.visit("/ASP/main_class.asp?tg=&vt=&lvl=&stype=-7&view=week&trn=0&page=&catid=&prodid=&date=#{t_month}%2F#{t_day}%2F#{t_year}&classid=0&sSU=&optForwardingLink=&qParam=&justloggedin=&nLgIn=&pMode=")
-  sleep(5)
+  puts spider.inspect
+  sleep(10)
   spider.select("All Location", :from => "optLocation")
   sleep(5)
   schedule = spider.all('table#classSchedule-mainTable tr').map{|row| row}
