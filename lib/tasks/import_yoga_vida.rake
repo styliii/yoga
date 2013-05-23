@@ -6,7 +6,6 @@ task :fetch_yogavida_classes => :environment do
   require "active_support/all"
   require 'chronic'
   require 'capybara/poltergeist'
-  require 'debugger'
   Capybara.run_server = false
   Capybara.javascript_driver = :poltergeist
   Capybara.current_driver = :poltergeist
