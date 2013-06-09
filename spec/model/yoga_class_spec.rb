@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'Chronic'
+require 'chronic'
 
 describe YogaClass do
   it 'is not valid if it is a duplicate' do

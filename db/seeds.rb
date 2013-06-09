@@ -11,6 +11,7 @@ jules = Teacher.where(first_name: "Jules").first
 heather = Teacher.where(first_name: "Heather").first
 jeffrey = Teacher.where(first_name: "Jeffrey", last_name: "Villanueva").first
 mimi = Teacher.where(first_name: "Mimi").first
+julianna = Teacher.where(first_name: "Julianna").first
 
   [lauren, jules, heather, jeffrey, mimi].each do |teacher|
     teacher.favorite = true
