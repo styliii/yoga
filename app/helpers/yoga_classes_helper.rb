@@ -1,5 +1,3 @@
-require 'uri'
-
 module YogaClassesHelper
   def link_to_next_days_classes(description)
     if params[:day]
