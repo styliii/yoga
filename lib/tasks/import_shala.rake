@@ -11,36 +11,32 @@ task :fetch_shala_classes => :environment do
   Capybara.current_driver = :poltergeist
   Capybara.app_host = "https://clients.mindbodyonline.com"
 
-  module Test
+  module Scraper
     class Yoga
       include Capybara::DSL
+      attr_accessor :t_day, :t_month, :t_year, :studio_id, :studio_name
 
-      def get_results
-        visit('/ASP/home.asp?studioid=3571')
-        all(:xpath, "//a[@class='modalBio']").each { |a| puts a[:href] }
-
+      def initialize(studio_id, studio_name)
+        t = Time.now
+        @t_day = t.strftime('%d')
+        @t_month = t.strftime('%m')
+        @t_year = t.strftime('%y')
+        @studio_id = studio_id
+        @studio_name = studio_name
       end
     end
   end
 
-  t = Time.now
-  t_day = t.strftime('%d')
-  t_month = t.strftime('%m')
-  t_year = t.strftime('%y')
-
-
-  spider = Test::Yoga.new
-  spider.visit('/ASP/home.asp?studioid=3571')
-  spider.visit("/ASP/main_class.asp?tg=&vt=&lvl=&stype=-7&view=week&trn=0&page=&catid=&prodid=&date=#{t_month}%2F#{t_day}%2F#{t_year}&classid=0&sSU=&optForwardingLink=&qParam=&justloggedin=&nLgIn=&pMode=")
-  spider.select("All Location", :from => "optLocation")
+  spider = Scraper::Yoga.new('3571', 'Shala')
+  spider.visit("/ASP/home.asp?studioid=#{spider.studio_id}")
+  spider.visit("/ASP/main_class.asp?tg=&vt=&lvl=&stype=-7&view=week&trn=0&page=&catid=&prodid=&date=#{spider.t_month}%2F#{spider.t_day}%2F#{spider.t_year}&classid=0&sSU=&optForwardingLink=&qParam=&justloggedin=&nLgIn=&pMode=")
+  # spider.select("All Location", :from => "optLocation")
   sleep(5)
   schedule = spider.all('table#classSchedule-mainTable tr').map{|row| row}
-  # puts schedule.inspect
-
   day_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     # find the index of all the days
     index_of_day = schedule.map do |row|
-      if day_of_week.include?(row.text[1..3])
+      if day_of_week.include?(row.text[0..2])
         schedule.index(row)
       end
     end
@@ -58,7 +54,6 @@ task :fetch_shala_classes => :environment do
   class_details = []
 
   hash_schedule.each do |class_date, classes|
-    puts class_date.inspect
 
     classes.each do |class_deets|
       next if class_deets.text.start_with?("closed")
@@ -67,7 +62,7 @@ task :fetch_shala_classes => :environment do
       class_time = "#{class_date.to_s} #{class_deets.find(:xpath, 'td[1]').text}"
       style = class_deets.find(:xpath, 'td[3]').text
       teachers_first_name = class_deets.find(:xpath, 'td[4]').text.split(" ").first
-      studio = "Shala #{class_deets.find(:xpath, 'td[7]').text}"
+      studio = "#{spider.studio_name} #{class_deets.find(:xpath, 'td[7]').text}"
       class_length = class_deets.find(:xpath, 'td[9]').text
       class_time.slice!(0,4)
 
@@ -78,7 +73,6 @@ task :fetch_shala_classes => :environment do
                                 :class_date_time=> class_time }
     end
   end
-
   YogaClass.insert_new(class_details)
 
 end

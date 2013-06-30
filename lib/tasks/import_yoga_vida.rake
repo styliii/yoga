@@ -10,14 +10,10 @@ task :fetch_yogavida_classes => :environment do
   Capybara.current_driver = :poltergeist
   Capybara.app_host = "https://clients.mindbodyonline.com"
 
-  module Test
+  module Scraper
     class Yoga
       include Capybara::DSL
 
-      def get_results
-        visit('/ASP/home.asp?studioid=8521')
-        all(:xpath, "//a[@class='modalBio']").each { |a| puts a[:href] }
-      end
     end
   end
 
@@ -27,7 +23,7 @@ task :fetch_yogavida_classes => :environment do
   t_year = t.strftime('%y')
 
 
-  spider = Test::Yoga.new
+  spider = Scraper::Yoga.new
   spider.visit('/ASP/home.asp?studioid=8521')
   spider.visit("/ASP/main_class.asp?tg=&vt=&lvl=&stype=-7&view=week&trn=0&page=&catid=&prodid=&date=#{t_month}%2F#{t_day}%2F#{t_year}&classid=0&sSU=&optForwardingLink=&qParam=&justloggedin=&nLgIn=&pMode=")
   puts spider.inspect
