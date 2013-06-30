@@ -19,3 +19,20 @@ kelly = Teacher.where(first_name: "Kelly").first
     teacher.favorite = true
     teacher.save
   end
+
+shala = Studio.where(name: "Shala Union Square").first
+shala.location = "815 Broadway, New York, NY"
+shala.save
+
+jivamukti = Studio.where(name: "Jivamukti").first
+jivamukti.location = "841 Broadway #2, New York, NY 10003"
+jivamukti.save
+
+iamyou = Studio.where(name: "iamyou").first
+iamyou.location = "132 Mulberry St #6e, New York, NY 10013"
+iamyou.save
+
+yogavida = Studio.where(name: "Yoga Vida 99 University").first
+yogavida.location = "99 University Pl #6, New York, NY 10003"
+yogavida.save
+
