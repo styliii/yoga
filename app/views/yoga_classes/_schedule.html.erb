@@ -1,4 +1,11 @@
 <% if @todays_yoga_classes.count == 0 %>
+  <div class="day_header">
+    <span class="prev_day"><%= link_to "", by_day_yoga_classes_path(year: @date.year, month: @date.month, day: @date.day - 1), remote: true %></span>
+    <span class="week_day"><%= @date.strftime("%A") %></span>
+    <span class="month"><%= @date.strftime("%b") %></span>
+    <span class="month_day"><%= @date.strftime("%d") %></span>
+    <span class="next_day"><%= link_to "", by_day_yoga_classes_path(year: @date.year, month: @date.month, day: @date.day + 1), remote: true %></span>
+  </div>
   <h2>No classes today</h2>
 <% else %>
   <div class="day today">
