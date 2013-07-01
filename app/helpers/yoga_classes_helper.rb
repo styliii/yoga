@@ -20,7 +20,7 @@ module YogaClassesHelper
       yoga_class_details[k] = URI.encode(v)
     end
 
-    "<a href='http://www.google.com/calendar/event?action=TEMPLATE&text=#{yoga_class_details[:title]}&dates=#{yoga_class_details[:start_date_time]}/#{yoga_class_details[:end_date_time]}&details=Review%20of%20Li%20here&location=#{yoga_class_details[:location]}&trp=true&sprop=Yoga%20In%20the%20City&sprop=name:www.test.com' target='_blank'>Add to Calendar</a>"   
+    "<a href='http://www.google.com/calendar/event?action=TEMPLATE&text=#{yoga_class_details[:title]}&dates=#{yoga_class_details[:start_date_time]}/#{yoga_class_details[:end_date_time]}&details=Review%20of%20Li%20here&location=#{yoga_class_details[:location]}&trp=true&sprop=Yoga%20In%20the%20City&sprop=name:www.test.com' target='_blank'>Add to Calendar</a>"
   end
 
   def gcal_title(yoga_class)
@@ -42,6 +42,6 @@ module YogaClassesHelper
     yc_date_time = yoga_class.class_date_time + 1.hour
     yc_date = yc_date_time.strftime("%Y%m%d")
     yc_time = yc_date_time.strftime("%H%M%S")
-    "#{yc_date}T#{yc_time}Z"
+    "#{yc_date}T#{yc_time}"
   end
 end
