@@ -28,7 +28,7 @@ jivamukti = Studio.where(name: "Jivamukti").first
 jivamukti.location = "841 Broadway #2, New York, NY 10003"
 jivamukti.save
 
-iamyou = Studio.where(name: "iamyou").first
+iamyou = Studio.where(name: "iamyoustudio").first
 iamyou.location = "132 Mulberry St #6e, New York, NY 10013"
 iamyou.save
 
