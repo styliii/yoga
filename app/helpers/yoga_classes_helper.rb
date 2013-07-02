@@ -35,7 +35,7 @@ module YogaClassesHelper
     yc_date_time = yoga_class.class_date_time
     yc_date = yc_date_time.strftime("%Y%m%d")
     yc_time = yc_date_time.strftime("%H%M%S")
-    "#{yc_date}T#{yc_time}Z"
+    "#{yc_date}T#{yc_time}"
   end
 
   def gcal_end_date_time(yoga_class)
