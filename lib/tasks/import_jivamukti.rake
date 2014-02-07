@@ -6,10 +6,9 @@ task :fetch_jivamukti_classes => :environment do
 
   url = "http://www.jivamuktiyoga.com/events/centers/1466"
   doc = Nokogiri::HTML(open(url))
-
   raw_info = doc.css('td.calendar-agenda-items')
   dates_of_week = raw_info[0,6].map do |day_of_month|
-    day_of_month.text.strip.gsub(/\n/,"")
+    day_of_month.text.strip.gsub(/\n/,"").split.first
   end
 
   class_details = []
@@ -21,9 +20,9 @@ task :fetch_jivamukti_classes => :environment do
 
     (0...num_classes).each do |num|
       class_type = td.css("div.node-title")[num].text.strip
-      next if td.css("div.node-data-field-class-type-field-class-teacher-uid")[num].nil?
+      next if td.css("div.view-data-customfield-phpcode-3")[num].nil?
 
-      teacher = td.css("div.node-data-field-class-type-field-class-teacher-uid")[num].text.strip
+      teacher = td.css("div.view-data-customfield-phpcode-3")[num].text.strip
       teachers_first_name, teachers_last_name = teacher.split(" ")
       class_time = td.css("div.node-data-field-class-datetime-field-class-datetime-value")[num].text.strip
       class_month = DateTime.now.strftime("%B")

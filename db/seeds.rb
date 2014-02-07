@@ -7,22 +7,22 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 lauren = Teacher.where(first_name: "Lauren", last_name: "Imparato").first
-jules = Teacher.where(first_name: "Jules").first
+# jules = Teacher.where(first_name: "Jules").first
 heather = Teacher.where(first_name: "Heather").first
 jeffrey = Teacher.where(first_name: "Jeffrey", last_name: "Villanueva").first
 mimi = Teacher.where(first_name: "Mimi").first
-julianna = Teacher.where(first_name: "Julianna").first
-kelly = Teacher.where(first_name: "Kelly").first
+# julianna = Teacher.where(first_name: "Julianna").first
+# kelly = Teacher.where(first_name: "Kelly").first
 
 
-  [lauren, jules, heather, jeffrey, mimi, kelly].each do |teacher|
+  [lauren, heather, jeffrey, mimi].each do |teacher|
     teacher.favorite = true
     teacher.save
   end
 
-shala = Studio.where(name: "Shala Union Square").first
-shala.location = "815 Broadway, New York, NY"
-shala.save
+# shala = Studio.where(name: "Shala Union Square").first
+# shala.location = "815 Broadway, New York, NY"
+# shala.save
 
 jivamukti = Studio.where(name: "Jivamukti").first
 jivamukti.location = "841 Broadway #2, New York, NY 10003"
