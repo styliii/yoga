@@ -28,7 +28,7 @@ task :fetch_jivamukti_classes => :environment do
       class_month = DateTime.now.strftime("%B")
       class_day = dates_of_week[(index + 1) % 7 - 1].gsub(/\s+/, "")
       puts "#{teachers_first_name} #{teachers_last_name}"
-      class_date_time = "#{class_month} #{class_day[0..-2]}, #{class_time}"
+      class_date_time = "#{class_month} #{class_day}, #{class_time}"
       studio = "Jivamukti"
 
       class_details <<  {:studio => studio,
