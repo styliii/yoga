@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
 
 gem 'rails', '4.0.1'
 
@@ -40,6 +39,7 @@ end
 group :production do
   gem 'newrelic_rpm'
 	gem 'pg'
+  gem 'rails_12factor', group: :production
 end
 
 # To use ActiveModel has_secure_password
@@ -56,3 +56,4 @@ end
 
 # To use debugger
 # gem 'debugger'
+ruby '1.9.3'
