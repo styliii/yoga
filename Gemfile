@@ -39,7 +39,7 @@ end
 group :production do
   gem 'newrelic_rpm'
 	gem 'pg'
-  gem 'rails_12factor', group: :production
+  gem 'rails_12factor'
 end
 
 # To use ActiveModel has_secure_password
