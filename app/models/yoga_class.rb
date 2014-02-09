@@ -27,7 +27,7 @@ class YogaClass < ActiveRecord::Base
 
   def self.fav_classes_this_week
     classes = YogaClass.classes_this_week.scoped(:joins => :teacher, :conditions => { :teachers => {:favorite => true}})
-    by_month = classes.group_by{|class_when| class_when.class_date_time.month}
+    by_month = classes.order(class_date_time: :asc).group_by{|class_when| class_when.class_date_time.month}
     by_month.each do |month, classes|
       by_month[month] = classes.group_by{|class_when| class_when.class_date_time.day }
     end
