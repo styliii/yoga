@@ -1,33 +1,38 @@
-.row
-  .columns.large-6.shadow-overlay.mobile-12
-    .row.classes-by-day
-      - @weeks_yoga_classes.each do |month, days|
-        - days.each do |day, y_classes|
-          .columns.small-12.schedule-container
-            .date.row
-              .pull-left.day=y_classes.first.class_date_time.strftime('%A')
-              .pull-right.day #{I18n.t("date.abbr_month_names")[month]} #{day}
-            %ol
-              - y_classes.each do |yoga_class|
-                %li.class-info
-                  .row
-                    .columns.small-12
-                      .time-info=yoga_class.class_date_time.strftime('%I:%M %p')
-                      .teacher-info=yoga_class.teacher.full_name
-                      .studio-info=yoga_class.studio.name
-                  .row
-                    .columns.small-6.mobile-12
-                      .teacher-review.text-left.hide
-                        Extended puppy pose abhilasa dandayamana bibhaktapada paschimottanasana dandayamana janushirasana in theory of speech, the highest state where the aspirant has the ability to travel between states without varying consciousness. lakshmanagupta pashupatta the flow of the spanda principle that takes place between any two things, two thoughts, two steps, two observations, etc. toe stand pose, often used in bikram yoga. vital energy force sustaining life and creation, breath, life, vitality.. Equal standing pose three parts forward bend pose reverse 
-                    .columns.small-6.mobile-12
-                      .studio-review.text-left.hide
-                        Extended puppy pose abhilasa dandayamana bibhaktapada paschimottanasana dandayamana janushirasana in theory of speech, the highest state where the aspirant has the ability to travel between states without varying consciousness. lakshmanagupta pashupatta the flow of the spanda principle that takes place between any two things, two thoughts, two steps, two observations, etc. toe stand pose, often used in bikram yoga. vital energy force sustaining life and creation, breath, life, vitality.. Equal standing pose three parts forward bend pose reverse 
+.cover-image
+  =#image_tag("beach_cover.jpg")
+.background-container-mobile
+  =image_tag("sirsasana_centered.jpg")
+.container
+  .row
+    .columns.large-6.shadow-overlay.mobile-12
+      .row.classes-by-day
+        - @weeks_yoga_classes.each do |month, days|
+          - days.each do |day, y_classes|
+            .columns.small-12.schedule-container
+              .date.row
+                .pull-left.day=y_classes.first.class_date_time.strftime('%A')
+                .pull-right.day #{I18n.t("date.abbr_month_names")[month]} #{day}
+              %ol
+                - y_classes.each do |yoga_class|
+                  %li.class-info
+                    .row
+                      .columns.small-12
+                        .time-info=yoga_class.class_date_time.strftime('%I:%M %p')
+                        .teacher-info=yoga_class.teacher.full_name
+                        .studio-info=yoga_class.studio.name
+                    .row
+                      .columns.small-6.mobile-12
+                        .teacher-review.text-left.hide
+                          Extended puppy pose abhilasa dandayamana bibhaktapada paschimottanasana dandayamana janushirasana in theory of speech, the highest state where the aspirant has the ability to travel between states without varying consciousness. lakshmanagupta pashupatta the flow of the spanda principle that takes place between any two things, two thoughts, two steps, two observations, etc. toe stand pose, often used in bikram yoga. vital energy force sustaining life and creation, breath, life, vitality.. Equal standing pose three parts forward bend pose reverse 
+                      .columns.small-6.mobile-12
+                        .studio-review.text-left.hide
+                          Extended puppy pose abhilasa dandayamana bibhaktapada paschimottanasana dandayamana janushirasana in theory of speech, the highest state where the aspirant has the ability to travel between states without varying consciousness. lakshmanagupta pashupatta the flow of the spanda principle that takes place between any two things, two thoughts, two steps, two observations, etc. toe stand pose, often used in bikram yoga. vital energy force sustaining life and creation, breath, life, vitality.. Equal standing pose three parts forward bend pose reverse 
+                      
                     
-                  
 
-  .columns.large-6.hide-for-mobile
-    .greetings-container
-      .greetings
-        Hello there!  I want to share my love of yoga with the world, starting with a curated list of yoga classes.  And yes, I always talk in sirsasana :).  Lokah samasthah sukinoh bhavanthu.
-    .triangle
-          
+    .columns.large-6.hide-for-mobile
+      .greetings-container
+        .greetings
+          Hello there!  I want to share my love of yoga with the world, starting with a curated list of yoga classes.  And yes, I always talk in sirsasana :).  Lokah samasthah sukinoh bhavanthu.
+      .triangle
+            

@@ -58,6 +58,25 @@ body {
   background-repeat: no-repeat;
   background-size: auto 700px;
   background-attachment: fixed;
+  @media screen and (device-aspect-ratio: 40/71) {
+    background-image: none;
+  }
+}
+.background-container-mobile {
+  display: none;
+  @media screen and (device-aspect-ratio: 40/71) {
+    display: block;
+  }
+  @media screen and (device-aspect-ratio: 2/3) {
+    display: block;
+  }
+  img {
+    position: fixed;
+    max-width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
 }
 .shadow-overlay {
   background: rgba(0,0,0,0.1);
