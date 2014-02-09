@@ -41,6 +41,8 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'unicorn'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
