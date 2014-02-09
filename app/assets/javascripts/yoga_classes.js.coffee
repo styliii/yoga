@@ -3,11 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-	$(document).keydown (e) ->
-		if e.keyCode is 37
-			$('span.prev_day a').click()
-			false
-  $(document).keydown (e) -> 
-    if e.keyCode is 39
-      $('span.next_day a').click()
-      false
+  $('li.class-info').on 'click', ->
+    $(this).find('.teacher-review').slideToggle()
+    $(this).find('.studio-review').slideToggle()        

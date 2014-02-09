@@ -10,6 +10,7 @@ $mobile: new-breakpoint(max-width 480px 4);
   &.large-8 { @include span-columns(8); }
   &.large-12 { @include span-columns(12); }
   &.small-4 { @include span-columns(4); }
+  &.small-6 { @include span-columns(6); }
   &.small-12 { @include span-columns(12); }
   &.small-2 { @include span-columns(2); }
   &.mobile-12 {
@@ -29,6 +30,15 @@ $mobile: new-breakpoint(max-width 480px 4);
   @include media($mobile) {
     display: none !important;
   }
+}
+.hide {
+  display: none;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
 }
 // text
 body { 
