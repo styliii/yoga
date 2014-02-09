@@ -27,9 +27,9 @@ class YogaClass < ActiveRecord::Base
 
   def self.fav_classes_this_week
     classes = YogaClass.classes_this_week.scoped(:joins => :teacher, :conditions => { :teachers => {:favorite => true}})
-    by_month = classes.group_by{|class_when| class_when.created_at.month}
+    by_month = classes.group_by{|class_when| class_when.class_date_time.month}
     by_month.each do |month, classes|
-      by_month[month] = by_month[month].group_by{|class_when| class_when.created_at.day }
+      by_month[month] = classes.group_by{|class_when| class_when.class_date_time.day }
     end
   end
 
@@ -37,7 +37,7 @@ class YogaClass < ActiveRecord::Base
     Chronic.time_class = Time.zone
     details.each do |detail|
       begin
-        studio_id       = Studio.find_or_create_by_name(detail[:studio]).id
+        studio_id       = Studio.find_or_create_by(name: detail[:studio]).id
         teacher_id      = Teacher.find_or_create_by_first_name(first_name: detail[:teachers_first_name], last_name: detail[:teachers_last_name]).id
         class_date_time = Chronic.parse(detail[:class_date_time])
         YogaClass.create(studio_id: studio_id, teacher_id: teacher_id, class_date_time: class_date_time )

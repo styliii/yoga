@@ -18,10 +18,16 @@ task :fetch_iamyou_classes => :environment do
     day, date, time, status = yc.split(" ")
     class_schedule = Hash.new
     class_schedule[:class_date_time] = date + "/" + Time.now.year.to_s + " " + time
-    puts class_schedule[:date_time]
-    if yc.include?("LI")
+    puts class_schedule[:class_date_time]
+    if yc.include?(" LI ")
       class_schedule[:teachers_first_name] = "Li"
       class_schedule[:teachers_last_name] = "Ouyang"
+    elsif yc.include?(" BE ")
+      class_schedule[:teachers_first_name] = "Be"
+      class_schedule[:teachers_last_name] = nil
+    elsif yc.include?(" Jen ")
+      class_schedule[:teachers_first_name] = "Jen"
+      class_schedule[:teachers_last_name] = nil
     else
       class_schedule[:teachers_first_name] = "Lauren"
       class_schedule[:teachers_last_name] = "Imparato"
@@ -32,6 +38,6 @@ task :fetch_iamyou_classes => :environment do
     weekly_schedule << class_schedule
   end
 
-  weekly_schedule.reject!{|class_detail| class_detail[:status] == "No"}
+  weekly_schedule.reject!{|class_detail| class_detail[:status] == "NO"}
   YogaClass.insert_new(weekly_schedule)
 end
