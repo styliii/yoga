@@ -10,6 +10,8 @@ gem 'chronic'
 gem 'acts-as-taggable-on'
 gem 'poltergeist'
 gem 'protected_attributes'
+gem 'haml', '>= 3.0.0'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,8 +19,6 @@ group :assets do
   gem 'sass-rails',   '~> 4.0.0'
   gem 'coffee-rails', '~> 4.0.0'
   gem 'neat'
-  gem 'haml', '>= 3.0.0'
-  gem 'haml-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
 
