@@ -1,0 +1,6 @@
+<ul>
+  <li class="time"><%= yoga_class.class_date_time.strftime("%I:%M %p") %></li>
+  <li class="teacher"><%= yoga_class.teacher.first_name %></li>
+  <li class="studio"><%= yoga_class.studio.name %></li>
+  <%= raw(link_to_google_calendar(yoga_class)) %>
+</ul>

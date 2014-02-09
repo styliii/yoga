@@ -3,7 +3,7 @@ class YogaClassesController < ApplicationController
   # GET /yoga_classes.json
   def index
     @date = Time.parse("#{params[:year]}/#{params[:month]}/#{params[:day]}") rescue Time.now
-    @todays_yoga_classes = YogaClass.fav_classes_on(@date)
+    @weeks_yoga_classes = YogaClass.fav_classes_this_week
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @yoga_classes }

@@ -12,12 +12,25 @@ class YogaClass < ActiveRecord::Base
     where("class_date_time >= ? AND class_date_time < ?", day.beginning_of_day, day.end_of_day)
   end
 
+  def self.classes_this_week
+    day = DateTime.now
+    where("class_date_time >= ? AND class_date_time < ?", day.beginning_of_day, (day + 7.days).end_of_day)
+  end
+
   def self.todays_classes
     self.classes_for_day(Time.now)
   end
 
   def self.fav_classes_on(day)
     YogaClass.classes_for_day(day).scoped(:joins => :teacher, :conditions => { :teachers => {:favorite => true}})
+  end
+
+  def self.fav_classes_this_week
+    classes = YogaClass.classes_this_week.scoped(:joins => :teacher, :conditions => { :teachers => {:favorite => true}})
+    by_month = classes.group_by{|class_when| class_when.created_at.month}
+    by_month.each do |month, classes|
+      by_month[month] = by_month[month].group_by{|class_when| class_when.created_at.day }
+    end
   end
 
   def self.insert_new(details)
