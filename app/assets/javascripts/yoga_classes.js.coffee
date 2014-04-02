@@ -6,3 +6,8 @@ $ ->
   $('li.class-info').on 'click', ->
     $(this).find('.teacher-review').slideToggle()
     $(this).find('.studio-review').slideToggle()        
+
+  $('.arrow-down').click ->
+    $('.cover-copy').fadeOut()
+    $('.arrow-down').fadeOut()
+    $('.cover-container').slideUp()

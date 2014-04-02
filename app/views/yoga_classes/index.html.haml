@@ -1,5 +1,12 @@
-.cover-image
-  =#image_tag("beach_cover.jpg")
+.cover-container
+  =image_tag("beach_cover.jpg", class: 'landing-page-image')
+  .row.cover-copy
+    .columns.small-4.push-4
+      .headline
+        Because life is too short.  Enjoy your life.  Let me find your yoga teacher.  
+      .subheadline
+        A curated list of yoga classes by a yoga snob.
+  =image_tag('arrow-down.png', class: 'arrow-down')
 .background-container-mobile
   =image_tag("sirsasana_centered.jpg")
 .container
@@ -21,18 +28,10 @@
                         .teacher-info=yoga_class.teacher.full_name
                         .studio-info=yoga_class.studio.name
                     .row
-                      .columns.small-6.mobile-12
-                        .teacher-review.text-left.hide
-                          Extended puppy pose abhilasa dandayamana bibhaktapada paschimottanasana dandayamana janushirasana in theory of speech, the highest state where the aspirant has the ability to travel between states without varying consciousness. lakshmanagupta pashupatta the flow of the spanda principle that takes place between any two things, two thoughts, two steps, two observations, etc. toe stand pose, often used in bikram yoga. vital energy force sustaining life and creation, breath, life, vitality.. Equal standing pose three parts forward bend pose reverse 
-                      .columns.small-6.mobile-12
-                        .studio-review.text-left.hide
-                          Extended puppy pose abhilasa dandayamana bibhaktapada paschimottanasana dandayamana janushirasana in theory of speech, the highest state where the aspirant has the ability to travel between states without varying consciousness. lakshmanagupta pashupatta the flow of the spanda principle that takes place between any two things, two thoughts, two steps, two observations, etc. toe stand pose, often used in bikram yoga. vital energy force sustaining life and creation, breath, life, vitality.. Equal standing pose three parts forward bend pose reverse 
-                      
-                    
+                      .columns.small-12.mobile-12
+                        .teacher-review.hide
+                          Giselle Mari has been called the alpha dog of the Bay Area Jivamukti Satsang.  And it is true.  She embodies what Jivamukti has been to me, and was finally the type of teacher I had been looking for.  She is the real deal.  Her classes are filled with Dharma, weaving it through out class, heavily weighted at the beginning and end.  She does not demo, but rather precisely instructs each movement accompanied by the breath.  Her sequencing has themes, well crafted so you feel satisfied even without breaking a sweat.  Every student will be assisted, no matter how crowded, by herself or an assistant.  And finally, her voice is the same one she uses everyday.  No fake, sing-songy voice, just the one she uses everyday.  There’s a real teacher in my eyes.  Someone who is not trying to be a yoga teacher, but just is.
 
     .columns.large-6.hide-for-mobile
-      .greetings-container
-        .greetings
-          Hello there!  I want to share my love of yoga with the world, starting with a curated list of yoga classes.  And yes, I always talk in sirsasana :).  Lokah samasthah sukinoh bhavanthu.
       .triangle
             
