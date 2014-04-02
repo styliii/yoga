@@ -10,7 +10,12 @@ $mobile: new-breakpoint(max-width 480px 4);
   &.large-8 { @include span-columns(8); }
   &.large-12 { @include span-columns(12); }
   &.small-4 { @include span-columns(4); }
-  &.small-6 { @include span-columns(6); }
+  &.small-6 {
+    @include span-columns(6);
+    &.push-3 {
+      @include shift(3);
+    }
+  }
   &.small-12 { @include span-columns(12); }
   &.small-2 { @include span-columns(2); }
   &.small-4 {
@@ -49,7 +54,7 @@ $mobile: new-breakpoint(max-width 480px 4);
 // text
 body {
   text-align: center;
-  font-family: 'Josefin Slab', serif;
+  font-family: 'PT Sans', sans-serif;
   color: white;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   margin: 0;
@@ -74,10 +79,14 @@ body {
   }
   .cover-copy {
     position: absolute;
-    top: 35%;
+    top: 30%;
+    color: black;
+    opacity: 0.6;
     .headline {
       font-size: 45px;
-      font-weight: 800;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
     .subheadline {
       font-size: 20px;
@@ -119,7 +128,7 @@ ol {
   padding-left: 0;
 }
 li.class-info {
-  font-family: 'Vollkorn', sans-serif;
+  // font-family: 'EB Garamond', serif;
   list-style-type: none;
   padding: 10px;
   &:hover {
